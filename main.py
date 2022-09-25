@@ -18,14 +18,14 @@ def startConsole():
     morpion = Morpion()
     robot = None
 
-    level = [0, 1]
+    level = ['0', '1']
     game = levelSelection()
 
-    if game not in level:
+    while game not in level:
         game = levelSelection()
 
-    if game != '0':
-        robot = IA(0, 2)
+    if int(game) != 0:
+        robot = IA(0)
 
     while ((morpion.winner() == False) or (morpion.nul() == False)):
         morpion.print()
@@ -35,7 +35,7 @@ def startConsole():
         while (1):
             ligne = int(input("Ligne ?(1/2/3)"))
             colonne = int(input("Colonne ?(1/2/3)"))
-            if morpion.play(1,ligne - 1,colonne - 1) == True:
+            if morpion.play(1, ligne - 1, colonne - 1) == True:
                 break
 
         morpion.print()
@@ -52,7 +52,7 @@ def startConsole():
 
     morpion.print()
 
-    restart = input("Voulez vous rejuer(y/n)")
+    restart = input("Voulez vous rejouer(y/n)")
     if (restart == 'y'):
         startConsole()
 
